@@ -5,6 +5,7 @@ import { createExitRegistryController } from './useCases/createExitRegistry'
 import { createUserController } from './useCases/createUser'
 import { listPointsController } from './useCases/listPoints'
 import { listUserController } from './useCases/ListUser'
+import { loginUserController } from './useCases/loginUser'
 
 const router = Router()
 
@@ -14,6 +15,10 @@ router.get('/', (request, response) => {
 
 router.post('/users', (request, response) => {
   return createUserController.handle(request, response)
+})
+
+router.post('/users/login', (request, response) => {
+  return loginUserController.handle(request, response)
 })
 
 router.get('/users', (request, response) => {
