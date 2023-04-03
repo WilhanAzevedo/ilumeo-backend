@@ -7,8 +7,6 @@ COPY . /app
 
 RUN npm install && apt-get update -y && apt-get install -y openssl
 
-RUN npm install -g npx
-
 EXPOSE 3333
 
 CMD ["npx prisma generate && npx prisma db push"]
