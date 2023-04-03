@@ -8,3 +8,4 @@ COPY . /app
 RUN npm install
 
 EXPOSE 3333
+
