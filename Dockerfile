@@ -5,7 +5,11 @@ WORKDIR /app
 
 COPY . /app
 
-RUN npm install
+RUN npm install && apt-get update -y && apt-get install -y openssl
+
+
 
 EXPOSE 3333
+
+CMD ["npx prisma generate && npx prisma db push"]
 

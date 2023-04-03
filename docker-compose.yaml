@@ -1,6 +1,15 @@
 version: '3.3'
 
 services:
+  db:
+    container_name: db
+    build: ./docker/postgresql/
+    volumes:
+      - ./docker/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - target: 5432
+        published: 5432
+        protocol: tcp
   app:
     container_name: app
     build: .
@@ -10,10 +19,5 @@ services:
     command: npm run dev
     ports:
       - 3333:3333
-  db:
-    container_name: db
-    build: ./docker/postgresql/
-    volumes:
-      - ./docker/postgresql/data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+    depends_on:
+      - db
